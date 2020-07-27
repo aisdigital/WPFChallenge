@@ -39,13 +39,13 @@ Consider a basic Windows desktop application used for recording customer data, w
 
 * It must received as input the following customer data:
 
-** Name;
+  * Name;
 
-** E-mail;
+  * E-mail;
 
-** Phone;
+  * Phone;
 
-** Address;
+  * Address;
 
 * User must provide the aforementioned data by means of a registration form in MainWindow;
 
@@ -53,9 +53,9 @@ Consider a basic Windows desktop application used for recording customer data, w
 
 * When applicable, buttons must be provided for basic operations such as:
 
-** Customer creation;
-** Customer editing;
-** Customer deletion;
+  * Customer creation;
+  * Customer editing;
+  * Customer deletion;
 
 During the challenge, please consider the following:
 
