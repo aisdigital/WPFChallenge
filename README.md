@@ -36,23 +36,34 @@ After set it all up, let's go to the challenge \o/
 Consider a basic Windows desktop application used for recording customer data, with the following requirements:
 
 * It must be developed using C# and WPF, of course;
+
 * It must received as input the following customer data:
+
 ** Name;
 ** E-mail;
 ** Phone;
 ** Address;
+
 * User must provide the aforementioned data by means of a registration form in MainWindow;
+
 * Existing customer data must be displayed in table format also in MainWindow;
+
 * When applicable, buttons must be provided for basic operations such as:
+
 ** Customer creation;
 ** Customer editing;
 ** Customer deletion;
 
-* During the challenge, please consider the following:
-** Feel free to implement UX/UI the way you think is good (assume a real-world scenario);
-** Regarding software architecture/design, also feel free to do it the way you think we will be able to see you at your finest;
-** During software construction, please bear in mind keeping the code as clean and maintainable as possible;
-** Please provide unit tests for all you think is necessary to be tested (you can use xUnit, for example);
-** As we have previously mentioned, you do not need to solve this challenged in its entirety, but we will surely take your best effort into consideration;
+During the challenge, please consider the following:
+
+* Feel free to implement UX/UI the way you think is good (assume a real-world scenario);
+
+* Regarding software architecture/design, also feel free to do it the way you think we will be able to see you at your finest;
+
+* During software construction, please bear in mind keeping the code as clean and maintainable as possible;
+
+* Please provide unit tests for all you think is necessary to be tested (you can use xUnit, for example);
+
+* As we have previously mentioned, you do not need to solve this challenged in its entirety, but we will surely take your best effort into consideration;
 
 Happy Coding!
