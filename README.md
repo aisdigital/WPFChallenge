@@ -40,8 +40,11 @@ Consider a basic Windows desktop application used for recording customer data, w
 * It must received as input the following customer data:
 
 ** Name;
+
 ** E-mail;
+
 ** Phone;
+
 ** Address;
 
 * User must provide the aforementioned data by means of a registration form in MainWindow;
