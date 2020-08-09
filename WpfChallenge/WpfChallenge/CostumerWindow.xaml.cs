@@ -4,14 +4,13 @@
 namespace WpfChallenge
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for CostumerWindows.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class CostumerWindow : Window
     {
-        public MainWindow()
+        public CostumerWindow()
         {
             InitializeComponent();
-            DataContext = new CostumersViewModel();
         }
 
         private void BtnSave_Click(object sender, RoutedEventArgs e)
