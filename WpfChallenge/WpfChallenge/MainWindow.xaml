@@ -5,8 +5,59 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfChallenge"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="WPF Challenge" Height="450" Width="800">
+
     <Grid>
-        
+        <!-- Customer Edition Panel -->
+        <StackPanel>
+            <StackPanel Margin="10" HorizontalAlignment="Stretch">
+                <Label>Customer</Label>
+                <Label Target="{Binding ElementName=txtName}">
+                    <StackPanel Orientation="Horizontal" >
+                        <Image Source="http://cdn1.iconfinder.com/data/icons/fatcow/16/bullet_green.png" />
+                        <AccessText Text="_Name:" />
+                    </StackPanel>
+                </Label>
+                <TextBox Name="txtName" Text="{Binding ElementName=CustomerGrid,Path=SelectedItem.name}"/>
+                <Label Target="{Binding ElementName=txtPhone}">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="http://cdn1.iconfinder.com/data/icons/fatcow/16/bullet_blue.png" />
+                        <AccessText Text="_Phone:" />
+                    </StackPanel>
+                </Label>
+                <TextBox Name="txtPhone" Text="{Binding ElementName=CustomerGrid,Path=SelectedItem.phone}"/>
+                <Label Target="{Binding ElementName=txtAddress}">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="http://cdn1.iconfinder.com/data/icons/fatcow/16/bullet_blue.png" />
+                        <AccessText Text="_Address:" />
+                    </StackPanel>
+                </Label>
+                <TextBox Name="txtAddress" Text="{Binding ElementName=CustomerGrid,Path=SelectedItem.address}"/>
+
+                <!-- Buttons -->
+                <StackPanel Orientation="Horizontal" Margin="10" HorizontalAlignment="Center" Width="Auto">
+                    <Button Content="New" Name="btnNew" Margin="5"
+                            Command="{Binding Path=CreateCommand}"
+                            Width="100" HorizontalAlignment="Center"></Button>
+                    <Button Content="Update" Name="btnUpdate" Margin="5"
+                            Command="{Binding Path=UpdateCommand}"
+                            Width="100" HorizontalAlignment="Center"></Button>
+                    <Button Content="Delete" Name="btnDelete" Margin="5"
+                            Command="{Binding Path=DeleteCommand}"
+                            Width="100" HorizontalAlignment="Center"></Button>
+                </StackPanel>
+            </StackPanel>
+            
+            <!-- Customer Table -->
+            <ListView Grid.Row="2" x:Name="CustomerGrid" ItemsSource="{Binding customers}" VerticalAlignment="Stretch">
+                <ListView.View>
+                    <GridView x:Name="grdTest">
+                        <GridViewColumn Header="Name" DisplayMemberBinding="{Binding name}"  Width="150"/>
+                        <GridViewColumn Header="Phone" DisplayMemberBinding="{Binding phone}"  Width="150"/>
+                        <GridViewColumn Header="Address" DisplayMemberBinding="{Binding address}" Width="400" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </StackPanel>
     </Grid>
 </Window>
