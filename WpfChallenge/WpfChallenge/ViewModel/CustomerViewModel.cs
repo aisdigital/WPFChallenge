@@ -3,10 +3,14 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
+using System.Diagnostics;
 using System.Windows.Input;
 using WpfChallenge.Models;
+using WpfChallenge.Commands;
 
 namespace WpfChallenge.ViewModel
 {
@@ -14,53 +18,36 @@ namespace WpfChallenge.ViewModel
     {
         public Customer selectedCustomer { get; set; }
         public ObservableCollection<Customer> customers { get; set; }
-        public CommandBinding NewCommand;
+        public ICommand UpdateCommand { get; set; }
+        public ICommand DeleteCommand { get; set; }
+        public ICommand CreateCommand { get; set; }
 
         public CustomerViewModel()
         {
             selectedCustomer = new Customer();
+            
+            // TODO Add Persistence
+            // Gerate Mockup Data
             customers = new ObservableCollection<Customer>
             {
                 new Customer{name="John Due",phone="",address=""}
             };
 
+            // Set Commands
+            UpdateCommand = new Commands.UpdateCommand();
+            DeleteCommand = new Commands.DeleteCommand();
+            CreateCommand = new Commands.CreateCommand();
         }
 
 
-        private ICommand UpdateCommander;
-
-
-        public ICommand UpdateCommand
+        private void DeleteCustomer(Customer customer)
         {
-            get
-            {
-                if (UpdateCommander == null)
-                    UpdateCommander = new Updater();
-                return UpdateCommander;
-            }
-            set
-            {
-                UpdateCommander = value;
-            }
+            customers.Remove(customer);
         }
 
-        private class Updater : ICommand
+        private void NewCustomer(Customer customer)
         {
-            #region ICommand Members  
-
-            public bool CanExecute(object parameter)
-            {
-                return true;
-            }
-
-            public event EventHandler CanExecuteChanged;
-
-            public void Execute(object parameter)
-            {
-
-            }
-
-            #endregion
+            customers.Add(customer);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

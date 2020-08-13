@@ -14,21 +14,21 @@
                 <Label>Customer</Label>
                 <Label Target="{Binding ElementName=txtName}">
                     <StackPanel Orientation="Horizontal" >
-                        <Image Source="http://cdn1.iconfinder.com/data/icons/fatcow/16/bullet_green.png" />
+                        <Image Source="./Assets/bullet_green.png" />
                         <AccessText Text="_Name:" />
                     </StackPanel>
                 </Label>
                 <TextBox Name="txtName" Text="{Binding ElementName=CustomerGrid,Path=SelectedItem.name}"/>
                 <Label Target="{Binding ElementName=txtPhone}">
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="http://cdn1.iconfinder.com/data/icons/fatcow/16/bullet_blue.png" />
+                        <Image Source="/Assets/bullet_blue.png" />
                         <AccessText Text="_Phone:" />
                     </StackPanel>
                 </Label>
                 <TextBox Name="txtPhone" Text="{Binding ElementName=CustomerGrid,Path=SelectedItem.phone}"/>
                 <Label Target="{Binding ElementName=txtAddress}">
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="http://cdn1.iconfinder.com/data/icons/fatcow/16/bullet_blue.png" />
+                        <Image Source="/Assets/bullet_black.png" />
                         <AccessText Text="_Address:" />
                     </StackPanel>
                 </Label>
@@ -38,23 +38,33 @@
                 <StackPanel Orientation="Horizontal" Margin="10" HorizontalAlignment="Center" Width="Auto">
                     <Button Content="New" Name="btnNew" Margin="5"
                             Command="{Binding Path=CreateCommand}"
+                            CommandParameter="{Binding .}"
                             Width="100" HorizontalAlignment="Center"></Button>
                     <Button Content="Update" Name="btnUpdate" Margin="5"
                             Command="{Binding Path=UpdateCommand}"
-                            Width="100" HorizontalAlignment="Center"></Button>
-                    <Button Content="Delete" Name="btnDelete" Margin="5"
-                            Command="{Binding Path=DeleteCommand}"
+                            CommandParameter="{Binding .}"
                             Width="100" HorizontalAlignment="Center"></Button>
                 </StackPanel>
             </StackPanel>
             
             <!-- Customer Table -->
-            <ListView Grid.Row="2" x:Name="CustomerGrid" ItemsSource="{Binding customers}" VerticalAlignment="Stretch">
+            <ListView Grid.Row="2" x:Name="CustomerGrid" SelectedValue="{Binding selectedCustomer}" ItemsSource="{Binding customers}" VerticalAlignment="Stretch">
                 <ListView.View>
                     <GridView x:Name="grdTest">
                         <GridViewColumn Header="Name" DisplayMemberBinding="{Binding name}"  Width="150"/>
                         <GridViewColumn Header="Phone" DisplayMemberBinding="{Binding phone}"  Width="150"/>
-                        <GridViewColumn Header="Address" DisplayMemberBinding="{Binding address}" Width="400" />
+                        <GridViewColumn Header="Address" DisplayMemberBinding="{Binding address}" Width="300" />
+                        <GridViewColumn Header="" Width="100">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Command="{Binding DataContext.DeleteCommand
+                                                , RelativeSource={RelativeSource AncestorType=ListView}}"
+                                            CommandParameter="{Binding .}"
+                                            Content="Delete">
+                                    </Button>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
                     </GridView>
                 </ListView.View>
             </ListView>
