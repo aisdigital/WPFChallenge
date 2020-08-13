@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using WpfChallenge.Models;
 using WpfChallenge.ViewModel;
@@ -26,7 +28,18 @@ namespace WpfChallenge.Commands
 
             Customer customer = new Customer(viewModel.selectedCustomer);
 
-            viewModel.customers.Add(customer);
+            // TODO Verify fields are empty
+            if (customer.name == null && customer.phone == null && customer.address == null)
+            {
+                // Display Alert
+                _ = MessageBox.Show("New Customer fFields are empty", "WPF Challenge",
+                                MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else
+            {
+                viewModel.customers.Add(customer);
+                viewModel.selectedCustomer = new Customer();
+            }
         }
 
         #endregion

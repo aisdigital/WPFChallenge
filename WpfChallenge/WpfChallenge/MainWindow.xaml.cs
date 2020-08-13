@@ -26,6 +26,7 @@ namespace WpfChallenge
             InitializeComponent();
 
             DataContext = new CustomerViewModel();
+            
         }
     }
 }

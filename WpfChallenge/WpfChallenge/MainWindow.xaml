@@ -18,21 +18,21 @@
                         <AccessText Text="_Name:" />
                     </StackPanel>
                 </Label>
-                <TextBox Name="txtName" Text="{Binding ElementName=CustomerGrid,Path=SelectedItem.name}"/>
+                <TextBox Name="txtName" Text="{Binding selectedCustomer.name}"/>
                 <Label Target="{Binding ElementName=txtPhone}">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Assets/bullet_blue.png" />
                         <AccessText Text="_Phone:" />
                     </StackPanel>
                 </Label>
-                <TextBox Name="txtPhone" Text="{Binding ElementName=CustomerGrid,Path=SelectedItem.phone}"/>
+                <TextBox Name="txtPhone" Text="{Binding selectedCustomer.phone}"/>
                 <Label Target="{Binding ElementName=txtAddress}">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Assets/bullet_black.png" />
                         <AccessText Text="_Address:" />
                     </StackPanel>
                 </Label>
-                <TextBox Name="txtAddress" Text="{Binding ElementName=CustomerGrid,Path=SelectedItem.address}"/>
+                <TextBox Name="txtAddress" Text="{Binding selectedCustomer.address}"/>
 
                 <!-- Buttons -->
                 <StackPanel Orientation="Horizontal" Margin="10" HorizontalAlignment="Center" Width="Auto">
@@ -48,7 +48,7 @@
             </StackPanel>
             
             <!-- Customer Table -->
-            <ListView Grid.Row="2" x:Name="CustomerGrid" SelectedValue="{Binding selectedCustomer}" ItemsSource="{Binding customers}" VerticalAlignment="Stretch">
+            <ListView Grid.Row="2" x:Name="CustomerGrid" SelectedValue="{Binding selectedCustomer, Mode=TwoWay}" ItemsSource="{Binding customers}" VerticalAlignment="Stretch">
                 <ListView.View>
                     <GridView x:Name="grdTest">
                         <GridViewColumn Header="Name" DisplayMemberBinding="{Binding name}"  Width="150"/>
@@ -59,7 +59,7 @@
                                 <DataTemplate>
                                     <Button Command="{Binding DataContext.DeleteCommand
                                                 , RelativeSource={RelativeSource AncestorType=ListView}}"
-                                            CommandParameter="{Binding .}"
+                                            CommandParameter="{Binding DataContext}"
                                             Content="Delete">
                                     </Button>
                                 </DataTemplate>

@@ -15,14 +15,20 @@ namespace WpfChallenge.Commands
 
         public bool CanExecute(object parameter)
         {
-            return true;
+            return parameter != null;
         }
 
         public event EventHandler CanExecuteChanged;
 
         public void Execute(object parameter)
         {
-            Customer customer = parameter as Customer;
+            CustomerViewModel viewModel = (CustomerViewModel)parameter;
+
+            Customer customer = new Customer(viewModel.selectedCustomer);
+
+            // TODO Add confirmation msg
+            viewModel.customers.Remove(customer);
+            
         }
 
         #endregion

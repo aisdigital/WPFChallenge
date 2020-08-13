@@ -16,7 +16,17 @@ namespace WpfChallenge.ViewModel
 {
     class CustomerViewModel :INotifyPropertyChanged
     {
-        public Customer selectedCustomer { get; set; }
+        private Customer _SelectedCustomer { get; set; }
+        public Customer selectedCustomer
+        {
+            get { return _SelectedCustomer; }
+            set
+            {
+                _SelectedCustomer = value;
+                OnPropertyChanged("selectedCustomer");
+            }
+        }
+
         public ObservableCollection<Customer> customers { get; set; }
         public ICommand UpdateCommand { get; set; }
         public ICommand DeleteCommand { get; set; }
