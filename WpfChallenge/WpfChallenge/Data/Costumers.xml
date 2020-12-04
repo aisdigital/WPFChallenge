@@ -1,0 +1,17 @@
+<?xml version="1.0" standalone="yes"?>
+<Costumers>
+  <Costumer>
+    <id>1</id>
+    <Name>Lineu Vieira</Name>
+    <Email>analista.lineu@gmail.com</Email>
+    <Phone>(61) 98608-3728</Phone>
+    <Address>Quadra 40 Rua 20 Lote 33 Apartamento 201</Address>
+  </Costumer>
+  <Costumer>
+    <id>2</id>
+    <Name>Rita de Cássia Rocha Silva</Name>
+    <Email>Rita.ritinha@gmail.com</Email>
+    <Phone>(61) 9999-9999</Phone>
+    <Address>Rua 10 Lote 32</Address>
+  </Costumer>
+</Costumers>

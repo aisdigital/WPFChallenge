@@ -5,8 +5,173 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfChallenge"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        xmlns:viewModel="clr-namespace:WpfChallenge.ViewModel"
+        Title="Customers" Height="600" Width="1024"
+        ResizeMode="NoResize"
+        WindowStyle="None"
+        Background="Transparent">
+
+    <Window.Resources>
+        <viewModel:CostumerViewModel x:Key="costumerViewModel" />
+    </Window.Resources>
+
+    <Border
+        Background="WhiteSmoke"
+        CornerRadius="10"
+        >
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="250"/>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <!--Logo-->
+                <TextBlock
+                    FontSize="30"
+                    Text="WPF Challenge"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"/>
+                <Separator 
+                    VerticalAlignment="Bottom"
+                    Width="200"
+                    Background="Silver"/>
+
+                <!--Profile Button-->
+                <StackPanel 
+                    VerticalAlignment="Center"
+                    Grid.Row="1">
+                    <Button
+                        Content="Admin"
+                        Grid.Row="1">
+                        <Button.Style>
+                            <Style TargetType="{x:Type Button}">
+                                <Setter Property="Height" Value="50"/>
+                                <Setter Property="Background" Value="LightGray"/>
+                                <Setter Property="FontWeight" Value="SemiBold"/>
+                                <Setter Property="HorizontalAlignment" Value="Center"/>
+                                <Setter Property="Width" Value="200"/>
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type Button}">
+                                            <Border
+                                                CornerRadius="25"
+                                                Background="{TemplateBinding Background}"
+                                                BorderThickness="{TemplateBinding BorderThickness}">
+
+                                                <Grid>
+                                                    <Ellipse
+                                                        HorizontalAlignment="Left"
+                                                        Width="45" 
+                                                        Height="45" 
+                                                        Stretch="Fill"
+                                                        Stroke="White"
+                                                        StrokeThickness="2"
+                                                        Margin="2,0"
+                                                        >
+
+                                                    </Ellipse>
+
+                                                    <ContentPresenter
+                                                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                        Content="{TemplateBinding Content}"
+                                                        />
+                                                </Grid>
+
+
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+
+                                </Setter>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                    <Grid>
+                        <TextBlock 
+                            Text="Logout"
+                            HorizontalAlignment="center"
+                            VerticalAlignment="Center"/>
+                    </Grid>
+                </StackPanel>
+                <Separator 
+                    VerticalAlignment="Bottom"
+                    Grid.Row="1"
+                    Width="200"
+                    Background="Silver"/>
+
+                <!--Menu-->
+                <StackPanel
+                    Grid.Row="2"
+                    Margin="0,10">
+                    <TextBlock
+                        HorizontalAlignment="Center"
+                        Text="-> Costumer"
+                        FontStyle="Oblique">
+
+                    </TextBlock>
+                </StackPanel>
+            </Grid>
+            <Grid
+                Grid.Column="1"
+                Background="LightGray">
+                <Label Content="Name:" HorizontalAlignment="Left" Margin="104,104,0,0" VerticalAlignment="Top"/>
+                <TextBox x:Name="txtName" HorizontalAlignment="Left" Height="23" Margin="153,104,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="535"/>
+                <Label Content="E-mail: " HorizontalAlignment="Left" Margin="104,156,0,0" VerticalAlignment="Top"/>
+                <TextBox HorizontalAlignment="Left" x:Name="txtEmail" Height="24" Margin="155,158,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="234"/>
+                <Label Content="Phone: " HorizontalAlignment="Left" Margin="396,158,0,0" VerticalAlignment="Top"/>
+                <TextBox x:Name="txtPhone" HorizontalAlignment="Left" Height="23" Margin="452,158,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="236"/>
+                <Label Content="Address: " HorizontalAlignment="Left" Margin="104,210,0,0" VerticalAlignment="Top"/>
+                <TextBox x:Name="txtAddress" HorizontalAlignment="Left" Height="23" Margin="162,214,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="526"/>
+                <Button Content="Save" x:Name="btnSave"   HorizontalAlignment="Left" Margin="613,259,0,0" VerticalAlignment="Top" Width="75" Click="btnSave_Click"/>
+
+                <Grid DataContext="{StaticResource ResourceKey=costumerViewModel}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="93*" />
+                        <RowDefinition Height="29*" />
+                        <RowDefinition Height="27*" />
+                        <RowDefinition Height="30*" />
+                        <RowDefinition Height="81*" />
+                    </Grid.RowDefinitions>
+                    <ListView Grid.ColumnSpan="2" BorderThickness="2" x:Name="lstCostumer" 
+                  IsSynchronizedWithCurrentItem="True" 
+                  ItemsSource="{StaticResource ResourceKey=costumerViewModel}"  
+                  Margin="10,35,10,43" 
+        Grid.RowSpan="3" Grid.Row="2" SelectionChanged="lstCostumer_SelectionChanged" >
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Width="25" Header="id" DisplayMemberBinding="{Binding id}" />
+                                <GridViewColumn Width="160" Header="Name" DisplayMemberBinding="{Binding Name}" />
+                                <GridViewColumn Width="160" Header="E-mail" DisplayMemberBinding="{Binding Email}" />
+                                <GridViewColumn Width="100" Header="Phone" DisplayMemberBinding="{Binding Phone}"/>
+                                <GridViewColumn Width="300" Header="Address" DisplayMemberBinding="{Binding Address}" />
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+
+                </Grid>
+                <Label x:Name="lblControl" Content="New Item" FontStyle="Italic"  HorizontalAlignment="Left" Margin="51,34,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.289,-0.192" Foreground="Blue"/>
+                <Button x:Name="btnDelete" Content="Delete" HorizontalAlignment="Left" Margin="523,259,0,0" VerticalAlignment="Top" Width="75" Click="btnDelete_Click"/>
+                <Button x:Name="btnNew"  Content="New Item" HorizontalAlignment="Left" Margin="439,259,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.093,0.25" Click="btnNew_Click"/>
+
+
+
+            </Grid>
+        </Grid>
+
+    </Border>
+
+
+
 </Window>
