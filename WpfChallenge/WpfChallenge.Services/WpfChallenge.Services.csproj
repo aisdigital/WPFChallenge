@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net472</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\WpfChallenge.Models\WpfChallenge.Models.csproj" />
+    <ProjectReference Include="..\WpfChallenge.Repositories\WpfChallenge.Repositories.csproj" />
+    <ProjectReference Include="..\WpfChallenge.Utils\WpfChallenge.Utils.csproj" />
+  </ItemGroup>
+
+</Project>

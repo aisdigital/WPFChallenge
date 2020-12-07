@@ -1,12 +1,84 @@
-﻿<Window x:Class="WpfChallenge.MainWindow"
+﻿<Window x:Name="Container" x:Class="WpfChallenge.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfChallenge"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="MainWindow" Height="450" Width="873" Background="#FFE1E5F1">
+    <DockPanel Margin="0,0">
+        <Border BorderBrush="Black" BorderThickness="1" VerticalAlignment="Top" DockPanel.Dock="Top">
+            <DockPanel x:Name="HeaderPanel" Height="42" DockPanel.Dock="Top">
+                <Label Content="Customers" VerticalAlignment="Top" FontSize="24" Width="124" HorizontalAlignment="Left" Height="37" Margin="0,0,0,0"/>
+
+                <Button x:Name="CreateButton" Width="59" HorizontalAlignment="Right" Margin="0,0,5,0" Height="24" Content="Create" Click="CreateButton_Click"/>
+            </DockPanel>
+        </Border>
+
+        <DockPanel x:Name="MainPanel" VerticalAlignment="Top" Margin="10,10">
+            <StackPanel x:Name="FormPanel" Width="277" IsEnabled="False">
+                <DockPanel LastChildFill="False">
+                    <TextBlock TextWrapping="Wrap" Text="Name:" Margin="0,5" />
+                    <TextBlock x:Name="NameFieldRequired" TextWrapping="Wrap" Text="*" Margin="5,5,0,0" Foreground="Red" Visibility="Hidden"/>
+
+                    <TextBlock x:Name="CustomerIDField" TextWrapping="Wrap" Text="" Margin="5,5,0,0" DockPanel.Dock="Right" FontWeight="Bold"/>
+                </DockPanel>
+                <TextBox x:Name="NameField" Height="23" TextWrapping="Wrap" Text=""/>
+
+                <TextBlock TextWrapping="Wrap" Text="E-mail:" Margin="0,5"/>
+                <TextBox x:Name="EmailField" Height="23" TextWrapping="Wrap" Text=""/>
+
+                <TextBlock TextWrapping="Wrap" Text="Phone:" Margin="0,5"/>
+                <TextBox x:Name="PhoneField" Height="23" TextWrapping="Wrap" Text=""/>
+
+                <TextBlock TextWrapping="Wrap" Text="Address:" Margin="0,5"/>
+                <TextBox x:Name="AddressField" Height="23" TextWrapping="Wrap" Text=""/>
+                <StackPanel Margin="0,20,0,0" Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Button x:Name="SaveButton" Content="Save" Width="80" FontWeight="Bold" BorderBrush="#FF276E0C" Click="SaveButton_Click" FontSize="15" Padding="1" Height="41"/>
+                    <Button x:Name="CancelButton" Content="Cancel" Width="80" Margin="20,0,0,0" BorderBrush="#FFDC1616" Click="CancelButton_Click" FontSize="15" Padding="1" Height="41"/>
+                </StackPanel>
+            </StackPanel>
+        </DockPanel>
+
+        <Border BorderBrush="Black" BorderThickness="1,0,0,0" VerticalAlignment="Top" DockPanel.Dock="Top" MinHeight="360" Height="367">
+            <DockPanel Margin="10,0,0,0">
+
+
+                <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="10,10,0,0">
+                    <TextBox x:Name="SearchCriteria" Height="23" TextWrapping="Wrap" Text="" Width="285" Margin="0,0,10,0"/>
+                    <Button x:Name="SearchButton" Content="Search" Width="75" Click="SearchButton_Click"/>
+                </StackPanel>
+
+                <DockPanel>
+                    <DataGrid x:Name="CustomersGrid" Margin="10" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                        <DataGrid.Columns>
+
+                            <DataGridTextColumn Header="ID" Binding="{Binding CustomerID}" IsReadOnly="True" />
+                            <DataGridTextColumn Header="Name" Binding="{Binding Name}" IsReadOnly="True" Width="*" />
+                            <DataGridTextColumn Header="E-mail" Binding="{Binding Email}" IsReadOnly="True" Width="*" />
+                            <DataGridTextColumn Header="Phone" Binding="{Binding Phone}" IsReadOnly="True" />
+                            <DataGridTextColumn Header="Address" Binding="{Binding Address}" IsReadOnly="True" />
+
+                            <DataGridTemplateColumn Header="">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Button x:Name="EditCustomerButton" Content="Edit" Height="21" VerticalAlignment="Top" Width="39" Margin="5,0,0,0" Click="EditCustomerButton_Click" CommandParameter="{Binding Path=CustomerID}"/>
+
+                                            <Button x:Name="DeleteCustomerButton" Content="Delete" Height="21" VerticalAlignment="Top" Width="39" Margin="5,0" Click="DeleteCustomerButton_Click" CommandParameter="{Binding Path=CustomerID}"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                </DockPanel>
+
+            </DockPanel>
+        </Border>
+
+    </DockPanel>
+
 </Window>
