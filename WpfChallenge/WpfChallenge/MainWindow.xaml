@@ -5,8 +5,37 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfChallenge"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="MainWindow"  WindowState="Maximized" Height="600" Width="1200
+        ">
+    <Grid Width="1194" Margin="0,34,-0.4,-19.6" HorizontalAlignment="Left">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="281*"/>
+            <ColumnDefinition Width="567*"/>
+        </Grid.ColumnDefinitions>
+        <DataGrid Name="gridClientes" Height="433" Margin="278.8,23,141.6,0" VerticalAlignment="Top" Grid.Column="1" AutoGenerateColumns="False"/>
+        <Label x:Name="lblCliNome" Content="Nome Completo:" HorizontalAlignment="Left" Margin="24,59,0,0" FontFamily="Tahoma" FontWeight="Bold" VerticalAlignment="Top"/>
+        <Label Content="Email:" HorizontalAlignment="Left" Margin="24,128,0,0" VerticalAlignment="Top" FontFamily="Tahoma" FontWeight="Bold"/>
+        <Label Content="Telefone" HorizontalAlignment="Left" Margin="24,194,0,0" FontFamily="Tahoma" FontWeight="Bold" VerticalAlignment="Top"/>
+        <Label Content="CEP:" HorizontalAlignment="Left" Margin="24,266,0,0" FontFamily="Tahoma" FontWeight="Bold" VerticalAlignment="Top" Width="110"/>
+        <TextBox x:Name="txtNome" HorizontalAlignment="Left" Margin="29,93,0,1" TextWrapping="Wrap" Width="610" Height="35
+                 " VerticalAlignment="Top" Grid.ColumnSpan="2" FontFamily="Arial" Padding="10,10,0,0"/>
+        <TextBox x:Name="txtEmail" HorizontalAlignment="Left" Margin="29,158,0,0" TextWrapping="Wrap" Width="610" Height="35" VerticalAlignment="Top" Grid.ColumnSpan="2" FontFamily="Arial" Padding="10,10,0,0"/>
+        <TextBox x:Name="txtTelefone" HorizontalAlignment="Left" Margin="29,225,0,0" TextWrapping="Wrap" Width="610" Height="35" VerticalAlignment="Top" Grid.ColumnSpan="2" FontFamily="Arial" Padding="10,10,0,0"/>
+        <TextBox x:Name="txtCEP" HorizontalAlignment="Left" Margin="29,296,0,0" TextWrapping="Wrap" Width="209" Height="35" VerticalAlignment="Top" FontFamily="Arial" Padding="10,10,0,0"/>
+        <TextBlock HorizontalAlignment="Left" Margin="24,23,0,0" TextWrapping="Wrap" Text="Cadastrar Cliente" VerticalAlignment="Top" Height="42" Width="255" FontFamily="Arial Black" FontWeight="Bold" FontSize="20"/>
+        <Label Content="UF" HorizontalAlignment="Left" Margin="242,271,0,0" FontFamily="Tahoma" FontWeight="Bold" VerticalAlignment="Top" Width="110"/>
+        <ComboBox x:Name="lstUF" HorizontalAlignment="Left" Margin="243,295,0,0" VerticalAlignment="Top" Width="63" Height="35" RenderTransformOrigin="0.974,0.545" FontFamily="Arial" Padding="10,10,5,3"/>
+        <TextBox HorizontalAlignment="Left" Margin="247,360,0,0" TextWrapping="Wrap" Width="388" Height="35" VerticalAlignment="Top" Grid.ColumnSpan="2" FontFamily="Arial" Padding="10,10,0,0"/>
+        <Label Content="Logradouro:" HorizontalAlignment="Left" Margin="242,338,0,0" FontFamily="Tahoma" FontWeight="Bold" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtCidade" HorizontalAlignment="Left" Margin="319,298,0,0" TextWrapping="Wrap" Width="318" Height="35" VerticalAlignment="Top" Grid.ColumnSpan="2" FontFamily="Arial" Padding="10,10,0,0"/>
+        <TextBox x:Name="txtBairro" HorizontalAlignment="Left" Margin="29,360,0,0" TextWrapping="Wrap" Width="209" Height="35" VerticalAlignment="Top" FontFamily="Arial" Padding="10,10,0,0"/>
+        <Label Content="Cidade:" HorizontalAlignment="Left" Margin="314,271,0,0" FontFamily="Tahoma" FontWeight="Bold" VerticalAlignment="Top" Width="98" Grid.ColumnSpan="2"/>
+        <Label Content="Bairro" HorizontalAlignment="Left" Margin="26,336,0,0" FontFamily="Tahoma" FontWeight="Bold" VerticalAlignment="Top" Width="110"/>
+        <TextBox HorizontalAlignment="Left" Margin="30,421,0,0" TextWrapping="Wrap" Width="56" Height="35" VerticalAlignment="Top" Padding="10,10,0,0"/>
+        <Label Content="Número" HorizontalAlignment="Left" Margin="30,398,0,0" FontFamily="Tahoma" FontWeight="Bold" VerticalAlignment="Top" Width="110"/>
+        <TextBox HorizontalAlignment="Left" Margin="105,421,0,0" TextWrapping="Wrap" Width="356" Height="35" VerticalAlignment="Top" Grid.ColumnSpan="2" Padding="10,10,0,0"/>
+        <Label Content="Complemento" HorizontalAlignment="Left" Margin="105,400,0,0" FontFamily="Tahoma" FontWeight="Bold" VerticalAlignment="Top" Width="110"/>
+        <Button x:Name="btnSalvar" Content="Salvar" Grid.Column="1" HorizontalAlignment="Left" Margin="166.8,474,0,0" VerticalAlignment="Top" Width="75" Height="35" Click="btnSalvarClick" RenderTransformOrigin="0.457,0.981" FontSize="14" FontWeight="Bold" FontFamily="Arial Black" Background="#FF3A9F34"/>
+
     </Grid>
 </Window>
