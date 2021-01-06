@@ -3,6 +3,7 @@ using Domain.Entities;
 using Domain.Repositories;
 using Shared.Commands;
 using Shared.Notifications;
+using System;
 
 namespace Domain.Handlers
 {
@@ -15,23 +16,34 @@ namespace Domain.Handlers
         }
         public ICommandResult Handle(CadastrarClienteCommand command)
         {
-            var cliente = new Cliente()
+            if (command.Validate())
             {
-                Nome = "Walisson de Oliveira Soares",
-                Email = "walissonde@gmail..com",
-                Telefone = "61998761639",
-                CEP = "72110600",
-                UF = "DF",
-                Cidade = "Taguatinga",
-                Bairro = "Taguatinga Norte",
-                Logradouro = "Chacara 66b",
-                Complemento = "Teste"
-            };
+                var cliente = new Cliente()
+                {
+                    Nome = command.Nome,
+                    Email = command.Email,
+                    Telefone = command.Telefone,
+                    CEP = command.CEP,
+                    UF = command.UF,
+                    Cidade = command.Cidade,
+                    Bairro = command.Bairro,
+                    Logradouro = command.Logradouro,
+                    Complemento = command.Complemento
+                };
 
-            cliente.Cadastrar();
-        
-            _clienteRepository.Cadastrar(cliente);
-            return null;
+                cliente.Cadastrar();
+
+                _clienteRepository.Cadastrar(cliente);
+
+                return new CommandResult(
+                    true,
+                    String.Empty,
+                    "O cliente foi cadastrado com sucesso"
+                );
+            }
+
+            return new CommandResult(false, string.Empty, command.Notifications);
+
         }
     }
 }
