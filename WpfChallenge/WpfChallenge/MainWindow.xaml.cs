@@ -12,6 +12,7 @@ using System.Windows.Controls;
 using System;
 using System.Text.RegularExpressions;
 using System.Windows.Input;
+using System.Configuration;
 
 namespace WpfChallenge
 {
