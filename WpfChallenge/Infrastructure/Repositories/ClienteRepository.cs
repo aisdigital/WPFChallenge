@@ -7,12 +7,13 @@ using System.Linq;
 using Dapper;
 using System.Data;
 using System.Data.SqlClient;
+using System.Configuration;
 
 namespace Infrastructure.Repositories
 {
     public class ClienteRepository : IClienteRepository
     {
-        private string connectionString = "Data Source=prd-01.database.windows.net;Database=IlliaDigital;Persist Security Info=True;User Id=walisson;Password=VGY&8uhb;";
+        private string connectionString = ConfigurationManager.ConnectionStrings["Conexao"].ConnectionString;
 
 
         public void Cadastrar(Cliente cliente)

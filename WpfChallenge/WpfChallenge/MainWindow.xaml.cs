@@ -10,6 +10,8 @@ using Domain.Repositories;
 using System.Data;
 using System.Windows.Controls;
 using System;
+using System.Text.RegularExpressions;
+using System.Windows.Input;
 
 namespace WpfChallenge
 {
@@ -96,7 +98,8 @@ namespace WpfChallenge
                 if (result.Success)
                 {
                     this.DataContext = new ClienteViewModel();
-                    MessageBox.Show(result.Data.ToString(),"Atenção !");
+                    PopularGrid();
+                    MessageBox.Show(result.Data.ToString(),"Atenção !");                    
                 }
                 else
                 {
@@ -199,6 +202,12 @@ namespace WpfChallenge
                 }
             }
         }
-        #endregion
+        #endregion           
+
+        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }
     }
 }

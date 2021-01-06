@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        
         xmlns:local="clr-namespace:WpfChallenge" xmlns:local1="clr-namespace:WpfChallenge.ViewModels"
         mc:Ignorable="d"
         Title="MainWindow"  WindowState="Maximized" Height="600" Width="1200
@@ -74,18 +75,19 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-
+            
+        
         <Label x:Name="lblCliNome"   Content="Nome Completo:" HorizontalAlignment="Left" Margin="23,64,0,0" FontFamily="Tahoma" FontWeight="Bold" VerticalAlignment="Top" Height="24" Width="129"/>
         <Label Content="Email:" HorizontalAlignment="Left" Margin="271,64,0,0" VerticalAlignment="Top" FontFamily="Tahoma" FontWeight="Bold" Height="24" Width="55"/>
-        <Label Content="Telefone" HorizontalAlignment="Left" Margin="19,148,0,0" FontFamily="Tahoma" FontWeight="Bold" VerticalAlignment="Top" Height="24" Width="74"/>
+        <Label Content="Telefone"  HorizontalAlignment="Left" Margin="19,148,0,0" FontFamily="Tahoma" FontWeight="Bold" VerticalAlignment="Top" Height="24" Width="74"/>
         <Label Content="CEP:" HorizontalAlignment="Left" Margin="24,238,0,0" FontFamily="Tahoma" FontWeight="Bold" VerticalAlignment="Top" Width="93" Height="24"/>
         <TextBox x:Name="txtNome" Text="{Binding Nome, UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True,ValidatesOnDataErrors=True}"
                       HorizontalAlignment="Left" Margin="23,93,0,0" TextWrapping="Wrap" Width="239" Height="24" VerticalAlignment="Top" FontFamily="Arial" Padding="5,5,0,0"/>
         <TextBox x:Name="txtEmail" Text="{Binding Email, UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True,ValidatesOnDataErrors=True}"
                       HorizontalAlignment="Left" Margin="271,93,0,0" TextWrapping="Wrap" Width="272" Height="24" VerticalAlignment="Top" FontFamily="Arial" Padding="5,5,0,0"/>
-        <TextBox x:Name="txtTelefone" Text="{Binding Telefone, UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True,ValidatesOnDataErrors=True}"
+        <TextBox PreviewTextInput="NumberValidationTextBox" x:Name="txtTelefone" Text="{Binding Telefone, UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True,ValidatesOnDataErrors=True}"
                       HorizontalAlignment="Left" Margin="24,177,0,0" TextWrapping="Wrap" Width="519" Height="24" VerticalAlignment="Top" FontFamily="Arial" Padding="5,5,0,0"/>
-        <TextBox x:Name="txtCEP" Text="{Binding CEP, UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True,ValidatesOnDataErrors=True}"
+        <TextBox PreviewTextInput="NumberValidationTextBox" x:Name="txtCEP" Text="{Binding CEP, UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True,ValidatesOnDataErrors=True}"
                       HorizontalAlignment="Left" Margin="23,265,0,0" TextWrapping="Wrap" Width="176" Height="24" VerticalAlignment="Top" FontFamily="Arial" Padding="5,5,0,0"/>
         <TextBlock HorizontalAlignment="Left" Margin="23,23,0,0" TextWrapping="Wrap" Text="Cliente" VerticalAlignment="Top" Height="24" Width="215" FontFamily="Arial Black" FontWeight="Bold" FontSize="20"/>
         <Label Content="UF" HorizontalAlignment="Left" Margin="208,238,0,0" FontFamily="Tahoma" FontWeight="Bold" VerticalAlignment="Top" Width="92" Height="24"/>
@@ -103,7 +105,7 @@
         <TextBox HorizontalAlignment="Left" Text="{Binding Complemento, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
             Margin="208,427,0,0" TextWrapping="Wrap" Width="335" Height="24" VerticalAlignment="Top" FontFamily="Arial" Padding="5,5,0,0" />
         <Label Content="Complemento:" HorizontalAlignment="Left" Margin="203,405,0,0" FontFamily="Tahoma" FontWeight="Bold" VerticalAlignment="Top" Width="101" Height="24"/>
-        <TextBox x:Name="txtBairro_Copy" Text="{Binding Numero, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+        <TextBox  PreviewTextInput="NumberValidationTextBox" Text="{Binding Numero, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
             HorizontalAlignment="Left" Margin="24,427,0,0" TextWrapping="Wrap" Width="176" Height="24" VerticalAlignment="Top" FontFamily="Arial" Padding="5,5,0,0"/>
         <Label Content="Numero" HorizontalAlignment="Left" Margin="21,405,0,0" FontFamily="Tahoma" FontWeight="Bold" VerticalAlignment="Top" Width="93" Height="24"/>
         <Button x:Name="btnCadastrar" Content="Cadastrar" HorizontalAlignment="Left" Margin="468,474,0,0" VerticalAlignment="Top" Width="75"  Click="btnCadastrarClick" Height="27"/>

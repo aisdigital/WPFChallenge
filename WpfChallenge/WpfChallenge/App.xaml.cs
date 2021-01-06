@@ -32,15 +32,13 @@ namespace WpfChallenge
         private void ConfigureContainer()
         {
             this.container = new StandardKernel();
-
-            container.Bind<IClienteRepository>().To<ClienteRepository>().InTransientScope();
-            container.Bind<ClienteHandler>().To<ClienteHandler>().InTransientScope();
+            DependencyRegister.Register(container);
         }
 
         private void ComposeObjects()
         {
             Current.MainWindow = this.container.Get<MainWindow>();
-            Current.MainWindow.Title = "DI with Ninject";
+            Current.MainWindow.Title = "Clientes";
         }
     }
 }
