@@ -2,13 +2,12 @@
 using Shared.Notifications;
 using Shared.Validation;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Domain.Commands
 {
-    public class CadastrarClienteCommand : Notifiable, ICommand
+    public class EditarClienteCommand : Notifiable, ICommand
     {
+        public Guid Id { get; set; }
         public string Nome { get; set; }
         public string Email { get; set; }
         public string Telefone { get; set; }

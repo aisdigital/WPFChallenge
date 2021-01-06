@@ -14,6 +14,7 @@ namespace WpfChallenge.ViewModels
 
         public event PropertyChangedEventHandler PropertyChanged;
 
+        public Guid Id { get; set; }
         [Required]
         public string Nome { get; set; }
         [Required]
@@ -32,7 +33,7 @@ namespace WpfChallenge.ViewModels
         [Required]
         public string Logradouro { get; set; }
         public string Complemento { get; set; }
-        public int Numero { get; set; }
+        public int? Numero { get; set; }
 
         public bool IsValid()
         {

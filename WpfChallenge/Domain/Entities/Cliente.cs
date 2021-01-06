@@ -20,10 +20,15 @@ namespace Domain.Entities
         public DateTime DataCadastro { get; set; }
         public DateTime DataEdicao { get; set; }
 
-       public void Cadastrar()
+        public void Cadastrar()
         {
             Id = Guid.NewGuid();
             DataCadastro = DateTime.Now;
+        }
+
+        public void Editar()
+        {
+            DataEdicao = DateTime.Now;
         }
     }
 }

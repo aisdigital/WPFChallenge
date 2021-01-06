@@ -40,50 +40,74 @@
             </Style.Triggers>
         </Style>
     </Window.Resources>
-    <Grid Width="1194" Margin="0,34,-0.4,-19.6" HorizontalAlignment="Left">
+    <Grid Margin="0,34,48.6,14.4">
         <Grid.RowDefinitions>
-            <RowDefinition Height="211*"/>
-            <RowDefinition Height="67*"/>
+            <RowDefinition Height="410*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="281*"/>
-            <ColumnDefinition Width="567*"/>
+            <ColumnDefinition Width="120*"/>
         </Grid.ColumnDefinitions>
 
-        <DataGrid Name="gridClientes" Height="433" Margin="278.8,23,141.6,0" VerticalAlignment="Top" Grid.Column="1" AutoGenerateColumns="False" Grid.RowSpan="2"/>
+        <DataGrid x:Name="dataGrid" AutoGenerateColumns="False" CanUserAddRows="False"
+            RowBackground="#fff" FontWeight="Bold" Foreground="#525252"
+            ScrollViewer.CanContentScroll="True" MaxHeight="390"
+            AlternatingRowBackground="#f2f2f2" BorderBrush="#000" BorderThickness="1"
+            ScrollViewer.HorizontalScrollBarVisibility="Visible"
+            ScrollViewer.VerticalScrollBarVisibility="Auto" RenderTransformOrigin="0.501,0.532" Margin="582,23,28.8,149.4">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Nome" Binding="{Binding Nome}" IsReadOnly="True" />
+                <DataGridTextColumn Header="Email" Binding="{Binding Email}" IsReadOnly="True" />
+                <DataGridTextColumn Header="Telefone" Binding="{Binding Telefone}" IsReadOnly="True" />
+                <DataGridTemplateColumn Header="">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="btnEditar"  Tag="{Binding Id}" Content="Editar" Click="btnEditar_Click" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="btnExcluir" Tag="{Binding Id}" Content="Excluir" Click="btnExcluir_Click" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
 
-
-        <Label x:Name="lblCliNome"   Content="Nome Completo:" HorizontalAlignment="Left" Margin="24,59,0,0" FontFamily="Tahoma" FontWeight="Bold" VerticalAlignment="Top" Height="24" Width="110"/>
-        <Label Content="Email:" HorizontalAlignment="Left" Margin="318,64,0,0" VerticalAlignment="Top" FontFamily="Tahoma" FontWeight="Bold" Height="24" Width="48"/>
-        <Label Content="Telefone" HorizontalAlignment="Left" Margin="19,148,0,0" FontFamily="Tahoma" FontWeight="Bold" VerticalAlignment="Top" Height="24" Width="62"/>
-        <Label Content="CEP:" HorizontalAlignment="Left" Margin="19,235,0,0" FontFamily="Tahoma" FontWeight="Bold" VerticalAlignment="Top" Width="110" Height="24"/>
+        <Label x:Name="lblCliNome"   Content="Nome Completo:" HorizontalAlignment="Left" Margin="23,64,0,0" FontFamily="Tahoma" FontWeight="Bold" VerticalAlignment="Top" Height="24" Width="129"/>
+        <Label Content="Email:" HorizontalAlignment="Left" Margin="271,64,0,0" VerticalAlignment="Top" FontFamily="Tahoma" FontWeight="Bold" Height="24" Width="55"/>
+        <Label Content="Telefone" HorizontalAlignment="Left" Margin="19,148,0,0" FontFamily="Tahoma" FontWeight="Bold" VerticalAlignment="Top" Height="24" Width="74"/>
+        <Label Content="CEP:" HorizontalAlignment="Left" Margin="24,238,0,0" FontFamily="Tahoma" FontWeight="Bold" VerticalAlignment="Top" Width="93" Height="24"/>
         <TextBox x:Name="txtNome" Text="{Binding Nome, UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True,ValidatesOnDataErrors=True}"
-                      HorizontalAlignment="Left" Margin="24,93,0,0" TextWrapping="Wrap" Width="284" Height="35
-                 " VerticalAlignment="Top" FontFamily="Arial" Padding="10,10,0,0"/>
+                      HorizontalAlignment="Left" Margin="23,93,0,0" TextWrapping="Wrap" Width="239" Height="24" VerticalAlignment="Top" FontFamily="Arial" Padding="5,5,0,0"/>
         <TextBox x:Name="txtEmail" Text="{Binding Email, UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True,ValidatesOnDataErrors=True}"
-                      HorizontalAlignment="Left" Margin="318,93,0,0" TextWrapping="Wrap" Width="323" Height="35" VerticalAlignment="Top" FontFamily="Arial" Padding="10,10,0,0" Grid.ColumnSpan="2"/>
+                      HorizontalAlignment="Left" Margin="271,93,0,0" TextWrapping="Wrap" Width="272" Height="24" VerticalAlignment="Top" FontFamily="Arial" Padding="5,5,0,0"/>
         <TextBox x:Name="txtTelefone" Text="{Binding Telefone, UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True,ValidatesOnDataErrors=True}"
-                      HorizontalAlignment="Left" Margin="25,177,0,0" TextWrapping="Wrap" Width="616" Height="35" VerticalAlignment="Top" Grid.ColumnSpan="2" FontFamily="Arial" Padding="10,10,0,0"/>
+                      HorizontalAlignment="Left" Margin="24,177,0,0" TextWrapping="Wrap" Width="519" Height="24" VerticalAlignment="Top" FontFamily="Arial" Padding="5,5,0,0"/>
         <TextBox x:Name="txtCEP" Text="{Binding CEP, UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True,ValidatesOnDataErrors=True}"
-                      HorizontalAlignment="Left" Margin="24,265,0,0" TextWrapping="Wrap" Width="209" Height="35" VerticalAlignment="Top" FontFamily="Arial" Padding="10,10,0,0"/>
-        <TextBlock HorizontalAlignment="Left" Margin="24,23,0,0" TextWrapping="Wrap" Text="Cadastrar Cliente" VerticalAlignment="Top" Height="42" Width="255" FontFamily="Arial Black" FontWeight="Bold" FontSize="20"/>
-        <Label Content="UF" HorizontalAlignment="Left" Margin="237,240,0,0" FontFamily="Tahoma" FontWeight="Bold" VerticalAlignment="Top" Width="110" Height="24"/>
+                      HorizontalAlignment="Left" Margin="23,265,0,0" TextWrapping="Wrap" Width="176" Height="24" VerticalAlignment="Top" FontFamily="Arial" Padding="5,5,0,0"/>
+        <TextBlock HorizontalAlignment="Left" Margin="23,23,0,0" TextWrapping="Wrap" Text="Cliente" VerticalAlignment="Top" Height="24" Width="215" FontFamily="Arial Black" FontWeight="Bold" FontSize="20"/>
+        <Label Content="UF" HorizontalAlignment="Left" Margin="208,238,0,0" FontFamily="Tahoma" FontWeight="Bold" VerticalAlignment="Top" Width="92" Height="24"/>
         <ComboBox Name="lstUF"   Text="{Binding UF, UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True,ValidatesOnDataErrors=True}"
-                      HorizontalAlignment="Left" Margin="245,264,0,0" VerticalAlignment="Top" Width="63" Height="35" RenderTransformOrigin="0.974,0.545" FontFamily="Arial" Padding="10,10,5,3" />
+                      HorizontalAlignment="Left" Margin="209,264,0,0" VerticalAlignment="Top" Width="53" Height="24" RenderTransformOrigin="0.974,0.545" FontFamily="Arial" Padding="5,5,5,3" />
         <TextBox HorizontalAlignment="Left" Text="{Binding Logradouro, UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True,ValidatesOnDataErrors=True}"
-                      Margin="243,350,0,0" TextWrapping="Wrap" Width="398" Height="35" VerticalAlignment="Top" Grid.ColumnSpan="2" FontFamily="Arial" Padding="10,10,0,0"/>
-        <Label Content="Logradouro:" HorizontalAlignment="Left" Margin="238,328,0,0" FontFamily="Tahoma" FontWeight="Bold" VerticalAlignment="Top" Width="120" Height="24"/>
+                      Margin="208,350,0,0" TextWrapping="Wrap" Width="335" Height="24" VerticalAlignment="Top" FontFamily="Arial" Padding="5,5,0,0"/>
+        <Label Content="Logradouro:" HorizontalAlignment="Left" Margin="209,321,0,0" FontFamily="Tahoma" FontWeight="Bold" VerticalAlignment="Top" Width="101" Height="24"/>
         <TextBox x:Name="txtCidade" Text="{Binding Cidade, UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True,ValidatesOnDataErrors=True}"
-                      HorizontalAlignment="Left" Margin="318,264,0,0" TextWrapping="Wrap" Width="323" Height="35" VerticalAlignment="Top" Grid.ColumnSpan="2" FontFamily="Arial" Padding="10,10,0,0" RenderTransformOrigin="0.546,0.514"/>
+                      HorizontalAlignment="Left" Margin="271,264,0,0" TextWrapping="Wrap" Width="272" Height="24" VerticalAlignment="Top" FontFamily="Arial" Padding="5,5,0,0" RenderTransformOrigin="0.546,0.514"/>
         <TextBox x:Name="txtBairro" Text="{Binding Bairro, UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True,ValidatesOnDataErrors=True}"
-                      HorizontalAlignment="Left" Margin="25,350,0,0" TextWrapping="Wrap" Width="209" Height="35" VerticalAlignment="Top" FontFamily="Arial" Padding="10,10,0,0"/>
-        <Label Content="Cidade:" HorizontalAlignment="Left" Margin="309,240,0,0" FontFamily="Tahoma" FontWeight="Bold" VerticalAlignment="Top" Width="98" Grid.ColumnSpan="2" Height="24"/>
-        <Label Content="Bairro" HorizontalAlignment="Left" Margin="22,326,0,0" FontFamily="Tahoma" FontWeight="Bold" VerticalAlignment="Top" Width="110" Height="24"/>
-        <TextBox HorizontalAlignment="Left" Margin="25,23.6,0,0" TextWrapping="Wrap" Width="56" Height="35" VerticalAlignment="Top" Padding="10,10,0,0" Grid.Row="1"/>
-        <Label Content="Número" HorizontalAlignment="Left" Margin="22,4.6,0,0" FontFamily="Tahoma" FontWeight="Bold" VerticalAlignment="Top" Width="110" Height="30" Grid.Row="1"/>
-        <TextBox HorizontalAlignment="Left" Margin="103,23.6,0,0" TextWrapping="Wrap" Width="356" Height="35" VerticalAlignment="Top" Grid.ColumnSpan="2" Padding="10,10,0,0" Grid.Row="1"/>
-        <Label Content="Complemento" HorizontalAlignment="Left" Margin="100,6.6,0,0" FontFamily="Tahoma" FontWeight="Bold" VerticalAlignment="Top" Width="110" Height="30" Grid.Row="1"/>
-        <Button x:Name="btnSalvar" Content="Salvar" Grid.Column="1" HorizontalAlignment="Left" Margin="170.8,63.6,0,0" VerticalAlignment="Top" Width="75" Height="35" Click="btnSalvarClick" Command="{Binding Cadastrar}" CommandParameter="{Binding}" RenderTransformOrigin="0.457,0.981" FontSize="14" FontWeight="Bold" FontFamily="Arial Black" Background="#FF3A9F34" Grid.Row="1"/>
+                      HorizontalAlignment="Left" Margin="24,350,0,0" TextWrapping="Wrap" Width="176" Height="24" VerticalAlignment="Top" FontFamily="Arial" Padding="5,5,0,0"/>
+        <Label Content="Cidade:" HorizontalAlignment="Left" Margin="271,238,0,0" FontFamily="Tahoma" FontWeight="Bold" VerticalAlignment="Top" Width="83" Height="24"/>
+        <Label Content="Bairro" HorizontalAlignment="Left" Margin="23,321,0,0" FontFamily="Tahoma" FontWeight="Bold" VerticalAlignment="Top" Width="93" Height="24"/>
+        <TextBox HorizontalAlignment="Left" Text="{Binding Complemento, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+            Margin="208,427,0,0" TextWrapping="Wrap" Width="335" Height="24" VerticalAlignment="Top" FontFamily="Arial" Padding="5,5,0,0" />
+        <Label Content="Complemento:" HorizontalAlignment="Left" Margin="203,405,0,0" FontFamily="Tahoma" FontWeight="Bold" VerticalAlignment="Top" Width="101" Height="24"/>
+        <TextBox x:Name="txtBairro_Copy" Text="{Binding Numero, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+            HorizontalAlignment="Left" Margin="24,427,0,0" TextWrapping="Wrap" Width="176" Height="24" VerticalAlignment="Top" FontFamily="Arial" Padding="5,5,0,0"/>
+        <Label Content="Numero" HorizontalAlignment="Left" Margin="21,405,0,0" FontFamily="Tahoma" FontWeight="Bold" VerticalAlignment="Top" Width="93" Height="24"/>
+        <Button x:Name="btnCadastrar" Content="Cadastrar" HorizontalAlignment="Left" Margin="468,474,0,0" VerticalAlignment="Top" Width="75"  Click="btnCadastrarClick" Height="27"/>
+        <Button x:Name="btnSalvar" Content="Salvar" Visibility="Hidden" Tag="{Binding Id}" HorizontalAlignment="Left" Margin="468,474,0,0" VerticalAlignment="Top" Width="75"  Click="btnSalvarClick" Height="27"/>
 
 
     </Grid>

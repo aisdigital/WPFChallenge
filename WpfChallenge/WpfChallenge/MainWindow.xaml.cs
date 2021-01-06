@@ -6,25 +6,31 @@ using System.Collections.Generic;
 using WpfChallenge.ViewModels;
 using System.ComponentModel.DataAnnotations;
 using Shared.Notifications;
-//using Unity;
+using Domain.Repositories;
+using System.Data;
+using System.Windows.Controls;
+using System;
 
 namespace WpfChallenge
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
+/// <summary>
+/// Interaction logic for MainWindow.xaml
+/// </summary>
     public partial class MainWindow : Window
     {
-        private readonly ClienteHandler _handler;    
+        private readonly ClienteHandler _handler;
+        private readonly IClienteRepository _clienteRepository;
 
-
-        public MainWindow(ClienteHandler handler)
+        public MainWindow(ClienteHandler handler,IClienteRepository clienteRepository)
         {            
-            _handler = handler;    
+            _handler = handler;
+            _clienteRepository = clienteRepository;                       
             InitializeComponent();
             PopularEstados();
-        }   
-
+            PopularGrid();
+        }
+        
+        #region Popular Listas
         private void PopularEstados()
         {
             lstUF.Items.Add("AC");
@@ -56,7 +62,17 @@ namespace WpfChallenge
             lstUF.Items.Add("TO");
         }
 
-        private void btnSalvarClick(object sender, RoutedEventArgs e)
+        private void PopularGrid()
+        {
+            var itens = _clienteRepository.Listar();
+            dataGrid.ItemsSource = itens;
+        }
+
+        #endregion
+
+        #region Actions Buttons
+
+        private void btnCadastrarClick(object sender, RoutedEventArgs e)
         {
             var cliente = (ClienteViewModel)this.DataContext;
             
@@ -80,7 +96,7 @@ namespace WpfChallenge
                 if (result.Success)
                 {
                     this.DataContext = new ClienteViewModel();
-                    MessageBox.Show(result.Message);
+                    MessageBox.Show(result.Data.ToString(),"Atenção !");
                 }
                 else
                 {
@@ -94,7 +110,95 @@ namespace WpfChallenge
                 }
             } 
            
-        }    
+        }     
 
+        private void btnExcluir_Click(object sender, RoutedEventArgs e)
+        {
+            var id = ((Button)sender).Tag.ToString();
+
+            MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Você deseja excluir o registro selecionado?", "Atenção", System.Windows.MessageBoxButton.YesNo);
+            if (messageBoxResult == MessageBoxResult.Yes)
+            {
+                var excluido = _clienteRepository.Excluir(Guid.Parse(id));
+                if (excluido)
+                {
+                    PopularGrid();
+                    MessageBox.Show("Registro excluído com sucesso","Atenção!");
+                }
+                else
+                {
+                    MessageBox.Show("Erro ao excluir registro", "Atenção!");
+                }
+            }
+        }
+
+        private void btnEditar_Click(object sender, RoutedEventArgs e)
+        {
+            var id = ((Button)sender).Tag.ToString();
+            var cliente = _clienteRepository.Get(Guid.Parse(id));
+            var viewModel = new ClienteViewModel()
+            {
+                Id = cliente.Id,
+                Nome = cliente.Nome,
+                Email = cliente.Email,
+                Telefone = cliente.Telefone,
+                CEP = cliente.CEP,
+                UF = cliente.UF,
+                Bairro = cliente.Bairro,
+                Cidade = cliente.Cidade,
+                Complemento = cliente.Complemento,
+                Logradouro = cliente.Logradouro,
+                Numero = cliente.Numero
+            };
+            this.DataContext = viewModel;
+            btnCadastrar.Visibility = Visibility.Hidden;
+            btnSalvar.Visibility = Visibility.Visible;
+        }
+
+        private void btnSalvarClick(object sender, RoutedEventArgs e)
+        {
+            var id = ((Button)sender).Tag.ToString();
+
+            var cliente = (ClienteViewModel)this.DataContext;
+
+            if (cliente.IsValid())
+            {
+                var command = new EditarClienteCommand()
+                {
+                    Id = cliente.Id,
+                    Nome = cliente.Nome,
+                    Email = cliente.Email,
+                    Telefone = cliente.Telefone,
+                    CEP = cliente.CEP,
+                    UF = cliente.UF,
+                    Bairro = cliente.Bairro,
+                    Cidade = cliente.Cidade,
+                    Complemento = cliente.Complemento,
+                    Logradouro = cliente.Logradouro,
+                    Numero = cliente.Numero
+                };
+                var result = this._handler.Handle(command);
+
+                if (result.Success)
+                {
+                    this.DataContext = new ClienteViewModel();
+                    PopularGrid();
+                    MessageBox.Show(result.Data.ToString(),"Atenção !");
+                    btnCadastrar.Visibility = Visibility.Visible;
+                    btnSalvar.Visibility = Visibility.Hidden;
+                }
+                else
+                {
+                    string mensagem = string.Empty;
+
+                    foreach (var item in (IReadOnlyCollection<Notification>)result.Data)
+                    {
+                        mensagem += item.Message;
+                    }
+                    MessageBox.Show(mensagem);
+                }
+            }
+        }
+        #endregion
     }
 }

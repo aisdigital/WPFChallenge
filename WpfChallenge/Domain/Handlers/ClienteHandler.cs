@@ -45,5 +45,39 @@ namespace Domain.Handlers
             return new CommandResult(false, string.Empty, command.Notifications);
 
         }
+
+        public ICommandResult Handle(EditarClienteCommand command)
+        {
+            if (command.Validate())
+            {
+                var cliente = new Cliente()
+                {
+                    Id = command.Id,
+                    Nome = command.Nome,
+                    Email = command.Email,
+                    Telefone = command.Telefone,
+                    CEP = command.CEP,
+                    UF = command.UF,
+                    Cidade = command.Cidade,
+                    Bairro = command.Bairro,
+                    Logradouro = command.Logradouro,
+                    Complemento = command.Complemento
+                };
+
+                cliente.Editar();
+
+                _clienteRepository.Atualizar(cliente);
+
+                return new CommandResult(
+                    true,
+                    String.Empty,
+                    "O cliente foi alterado com sucesso"
+                );
+            }
+
+            return new CommandResult(false, string.Empty, command.Notifications);
+
+        }
+
     }
 }
