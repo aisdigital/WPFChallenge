@@ -1,13 +1,12 @@
-﻿using Domain.Entities;
+﻿using Dapper;
+using Domain.Entities;
 using Domain.Repositories;
 using System;
 using System.Collections.Generic;
-using System.Text;
-using System.Linq;
-using Dapper;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Configuration;
+using System.Linq;
 
 namespace Infrastructure.Repositories
 {
@@ -60,7 +59,7 @@ namespace Infrastructure.Repositories
                                     ,Complemento = @Complemento
                                     ,DataEdicao = @DataEdicao
                                 WHERE Id=@Id ";
-                    var teste =connection.Execute(sql, cliente);
+                    var teste = connection.Execute(sql, cliente);
                     return true;
                 }
                 catch (Exception ex)
