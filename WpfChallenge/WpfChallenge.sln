@@ -1,9 +1,24 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30320.27
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1062
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfChallenge", "WpfChallenge\WpfChallenge.csproj", "{C62F58F6-D867-40AF-93B8-F617E726CFD4}"
+	ProjectSection(ProjectDependencies) = postProject
+		{053CB194-79DF-4312-B73A-209B29596154} = {053CB194-79DF-4312-B73A-209B29596154}
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WpfChallenge.Domain", "WpfChallenge.Domain\WpfChallenge.Domain.csproj", "{C2DCA6CA-D455-4CE0-AAD7-549ACB3E0D63}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WpfChallenge.Repository", "WpfChallenge.Repository\WpfChallenge.Repository.csproj", "{053CB194-79DF-4312-B73A-209B29596154}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C2DCA6CA-D455-4CE0-AAD7-549ACB3E0D63} = {C2DCA6CA-D455-4CE0-AAD7-549ACB3E0D63}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfChallenge.Test", "WpfChallenge.Test\WpfChallenge.Test.csproj", "{ECE46DF2-97AA-4FB6-A8B9-903B47B66B6A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C62F58F6-D867-40AF-93B8-F617E726CFD4} = {C62F58F6-D867-40AF-93B8-F617E726CFD4}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +30,18 @@ Global
 		{C62F58F6-D867-40AF-93B8-F617E726CFD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C62F58F6-D867-40AF-93B8-F617E726CFD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C62F58F6-D867-40AF-93B8-F617E726CFD4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2DCA6CA-D455-4CE0-AAD7-549ACB3E0D63}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2DCA6CA-D455-4CE0-AAD7-549ACB3E0D63}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2DCA6CA-D455-4CE0-AAD7-549ACB3E0D63}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2DCA6CA-D455-4CE0-AAD7-549ACB3E0D63}.Release|Any CPU.Build.0 = Release|Any CPU
+		{053CB194-79DF-4312-B73A-209B29596154}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{053CB194-79DF-4312-B73A-209B29596154}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{053CB194-79DF-4312-B73A-209B29596154}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{053CB194-79DF-4312-B73A-209B29596154}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ECE46DF2-97AA-4FB6-A8B9-903B47B66B6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ECE46DF2-97AA-4FB6-A8B9-903B47B66B6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ECE46DF2-97AA-4FB6-A8B9-903B47B66B6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ECE46DF2-97AA-4FB6-A8B9-903B47B66B6A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
