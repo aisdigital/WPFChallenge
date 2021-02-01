@@ -11,7 +11,7 @@ namespace WpfChallenge.Access
         public MySqlConnection setConnection()
         {
             //string connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
-            MySqlConnection connection = new MySqlConnection("Server=localhost;DataBase=ilia_challenge;Uid=root;Pwd=V@gn3r811973");
+            MySqlConnection connection = new MySqlConnection("Server=localhost;DataBase=ilia_challenge;Uid=root;Pwd=xxx");
 
             try
             {
