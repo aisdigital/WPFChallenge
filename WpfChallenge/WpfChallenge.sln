@@ -21,6 +21,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfChallenge.Domain", "WpfC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfChallenge.Application", "WpfChallenge.Application\WpfChallenge.Application.csproj", "{446D300B-449A-4A24-B159-CDB21893462F}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Tests", "4 - Tests", "{188A583D-C4D0-42F0-9D6B-ECA171ED1DAC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfChallenge.Tests", "WpfChallenge.Tests\WpfChallenge.Tests.csproj", "{657334BA-7F39-486D-A1A3-F073BCB9E432}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,6 +47,10 @@ Global
 		{446D300B-449A-4A24-B159-CDB21893462F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{446D300B-449A-4A24-B159-CDB21893462F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{446D300B-449A-4A24-B159-CDB21893462F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{657334BA-7F39-486D-A1A3-F073BCB9E432}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{657334BA-7F39-486D-A1A3-F073BCB9E432}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{657334BA-7F39-486D-A1A3-F073BCB9E432}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{657334BA-7F39-486D-A1A3-F073BCB9E432}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -53,6 +61,7 @@ Global
 		{8A4A9D2C-995A-4921-A936-A4F031080BBA} = {22B786B1-A2D4-4968-B12A-3E27AD381079}
 		{DFEF6D48-FC1A-413F-A91F-295FD69021A6} = {366D56BF-BB6A-44B0-84FB-A03622B1B6B1}
 		{446D300B-449A-4A24-B159-CDB21893462F} = {F3ACEEB8-0183-4891-81C7-A4139966EED0}
+		{657334BA-7F39-486D-A1A3-F073BCB9E432} = {188A583D-C4D0-42F0-9D6B-ECA171ED1DAC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {93794022-AE52-412A-9AFA-FFDA49CE4490}

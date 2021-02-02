@@ -2,72 +2,84 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using WpfChallenge.Domain.Interfaces.Repositories;
 using WpfChallenge.Infrastructure.Data.Contexto;
 
 namespace WpfChallenge.Infrastructure.Data.Repositories
 {
-    public class RepositoryBase<TEntity> : IDisposable, IRepositoryBase<TEntity> where TEntity : class
-    {
-        protected WpfChallengeContext Db = new WpfChallengeContext();
+	public class RepositoryBase<TEntity> : IDisposable, IRepositoryBase<TEntity> where TEntity : class
+	{
+		protected WpfChallengeContext Db = new WpfChallengeContext();
 
-        public void Add(TEntity obj)
+		#region Add
+		public bool Add(TEntity obj)
 		{
 			try
 			{
-                Db.Set<TEntity>().Add(obj);
-                Db.SaveChanges();
-            }
+				Db.Set<TEntity>().Add(obj);
+				Db.SaveChanges();
+				return true;
+			}
 			catch (Exception ex)
 			{
 				throw ex;
 			}
-            
-        }
+		}
+		#endregion
 
-        public TEntity GetById(int id)
-        {
-            return Db.Set<TEntity>().Find(id);
-        }
+		#region GetById
+		public TEntity GetById(int id)
+		{
+			return Db.Set<TEntity>().Find(id);
+		}
+		#endregion
 
-        public IEnumerable<TEntity> GetAll()
-        {
-            return Db.Set<TEntity>().ToList();
-        }
+		#region GetAll
+		public IEnumerable<TEntity> GetAll()
+		{
+			return Db.Set<TEntity>().ToList();
+		}
+		#endregion
 
-        public void Update(TEntity obj)
-        {
+		#region Update
+		public bool Update(TEntity obj)
+		{
 			try
 			{
-                Db.Entry(obj).State = EntityState.Modified;
-                Db.SaveChanges();
-            }
+				Db.Entry(obj).State = EntityState.Modified;
+				Db.SaveChanges();
+				return true;
+			}
 			catch (Exception ex)
 			{
 				throw ex;
 			}
-            
-        }
+		}
+		#endregion
 
-        public void Remove(TEntity obj)
-        {
+		#region Remove
+		public bool Remove(TEntity obj)
+		{
 			try
 			{
-                Db.Set<TEntity>().Remove(obj);
-                Db.SaveChanges();
-            }
+				Db.Set<TEntity>().Remove(obj);
+				Db.SaveChanges();
+				return true;
+			}
 			catch (Exception ex)
 			{
 				throw ex;
 			}
-            
-        }
+		}
+		#endregion
 
-        public void Dispose()
-        {
-            throw new NotImplementedException();
-        }
-    }
+		#region Dispose
+		public void Dispose()
+		{
+			throw new NotImplementedException();
+		}
+
+		#endregion
+
+	}
 }

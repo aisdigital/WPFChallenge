@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity.ModelConfiguration;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data.Entity.ModelConfiguration;
 using WpfChallenge.Domain.Entities;
 
 namespace WpfChallenge.Infrastructure.Data.EntityConfig
 {
 	public class ContactConfiguration : EntityTypeConfiguration<Contact>
 	{
+		#region ContactConfiguration
+
 		public ContactConfiguration()
 		{
 			HasKey(c => c.ContactId);
@@ -29,5 +26,7 @@ namespace WpfChallenge.Infrastructure.Data.EntityConfig
 				.IsRequired()
 				.HasMaxLength(250);
 		}
+
+		#endregion ContactConfiguration
 	}
 }

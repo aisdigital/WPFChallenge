@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using WpfChallenge.Domain.Entities;
+﻿using WpfChallenge.Domain.Entities;
 using WpfChallenge.Domain.Interfaces.Services;
 
 namespace WpfChallenge.Application
@@ -13,8 +8,9 @@ namespace WpfChallenge.Application
 		private readonly IServiceContact _contactService;
 
 		public AppServiceContact(IServiceContact contactService)
+			: base(contactService)
 		{
 			_contactService = contactService;
 		}
-    }
+	}
 }

@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using WpfChallenge.Application.Interfaces;
 using WpfChallenge.Domain.Interfaces.Services;
 
@@ -12,10 +9,10 @@ namespace WpfChallenge.Application
 	{
 		private readonly IServiceBase<TEntity> _serviceBase;
 
-		//public AppServiceBase(IServiceBase<TEntity> serviceBase)
-		//{
-		//	_serviceBase = serviceBase;
-		//}
+		public AppServiceBase(IServiceBase<TEntity> serviceBase)
+		{
+			_serviceBase = serviceBase;
+		}
 
 		public void Add(TEntity obj)
 		{

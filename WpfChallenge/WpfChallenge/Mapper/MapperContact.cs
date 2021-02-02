@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using WpfChallenge.Domain.Entities;
 using WpfChallenge.DTO;
 using WpfChallenge.Mapper.Interface;
@@ -11,6 +8,8 @@ namespace WpfChallenge.Mapper
 {
 	public class MapperContact : IMapperContact
 	{
+
+		#region MapperDtoToEntity
 		public Contact MapperDtoToEntity(ContactDTO contactDTO)
 		{
 			var contact = new Contact()
@@ -25,6 +24,9 @@ namespace WpfChallenge.Mapper
 			return contact;
 		}
 
+		#endregion
+
+		#region MapperEntityToDto
 		public ContactDTO MapperEntityToDto(Contact contact)
 		{
 			var contactDTO = new ContactDTO()
@@ -39,6 +41,9 @@ namespace WpfChallenge.Mapper
 			return contactDTO;
 		}
 
+		#endregion
+
+		#region MapperListContactsDto
 		public IEnumerable<ContactDTO> MapperListContactsDto(IEnumerable<Contact> contacts)
 		{
 			var dto = contacts.Select(c => new ContactDTO()
@@ -52,5 +57,8 @@ namespace WpfChallenge.Mapper
 
 			return dto;
 		}
+
+		#endregion
+
 	}
 }
