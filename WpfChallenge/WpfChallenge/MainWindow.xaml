@@ -4,9 +4,61 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfChallenge"
+        xmlns:Controls="clr-namespace:AC.AvalonControlsLibrary.Controls;assembly=AvalonControlsLibrary"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
         
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"        
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        
+        Title="Contacts Register" Height="600" Width="1000" Loaded="Window_Loaded">
+    <Grid>
+        <TextBox x:Name="txtName" MaxLength="150" Height="22" Margin="87,46,280,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.455"/>
+        <Button x:Name="btnInserir" Content="Save" HorizontalAlignment="Left" Margin="16,236,0,0" VerticalAlignment="Top" Width="75" Click="btnInserir_Click"/>
+        <Label Content="Name" HorizontalAlignment="Left" Margin="27,42,0,0" VerticalAlignment="Top"/>
+        <Label Content="Phone" HorizontalAlignment="Left" Margin="27,86,0,0" VerticalAlignment="Top"/>
+        <Controls:MaskedTextBox x:Name="txtPhone" AcceptsTab="True" CharacterCasing="Upper" Mask="(00)00000-0000" HorizontalAlignment="Left" Height="24" Margin="87,88,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="205"/>
+        <Label Content="E-mail" HorizontalAlignment="Left" Margin="26,134,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtEmail" MaxLength="100" HorizontalAlignment="Left" Height="23" Margin="87,134,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="282"/>
+        <Label Content="Address" HorizontalAlignment="Left" Margin="16,182,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtAddress" MaxLength="250" HorizontalAlignment="Left" Height="23" Margin="87,182,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="504"/>
+
+
+        <DataGrid x:Name="dgvContacts" AutoGenerateColumns="False" SelectionUnit="FullRow" SelectionMode="Extended" CanUserReorderColumns="True" HorizontalAlignment="Left" Height="273" Margin="10,286,0,0" VerticalAlignment="Top" Width="972">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="btEditar" Click="btEdit_Click" Content="Edit"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="btRemove" Click="btRemove_Click" Content="Remove"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Binding="{Binding Name}" Header="Contact Name"/>
+                <DataGridTextColumn Binding="{Binding Phone}" Header="Phone"/>
+                <DataGridTextColumn Binding="{Binding Email}" Header="E-mail"/>
+                <DataGridTextColumn Binding="{Binding Address}" Header="Address"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="btnUpdate" Content="Update" HorizontalAlignment="Left" Margin="116,236,0,0" VerticalAlignment="Top" Width="86" Click="btnUpdate_Click" IsEnabled="False"/>
+        
+
+
+
+
+
+
+
     </Grid>
 </Window>
