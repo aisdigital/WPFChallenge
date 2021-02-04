@@ -7,6 +7,34 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="113*"/>
+            <ColumnDefinition Width="19*"/>
+        </Grid.ColumnDefinitions>
+        <Label Content="Nome" Height="28" HorizontalAlignment="Left" Margin="12,208,0,0" Name="label2" VerticalAlignment="Top" Width="43" Visibility="Visible" RenderTransformOrigin="0.522,-0.967" />
+        <Button Content="Inserir" Height="32" HorizontalAlignment="Left" Margin="52,362,0,0" Name="btnInserir" VerticalAlignment="Top" Width="75" Click="btnInserir_Click" />
+        <Button Content="Atualizar" Height="32" HorizontalAlignment="Right" Margin="0,362,335.562,0" Name="btnAtualizar" VerticalAlignment="Top" Width="75" Click="btnAtualizar_Click" />
+        <Button Content="Deletar" Height="32" HorizontalAlignment="Right" Margin="0,362,441.562,0" Name="btnDeletar" VerticalAlignment="Top" Width="75" Click="btnDeletar_Click" />
+        <TextBox Height="23" HorizontalAlignment="Left" Margin="71,208,0,0" Name="txtCustomerNome" VerticalAlignment="Top" Width="331" />
+        <Label Content="Email" Height="28" HorizontalAlignment="Left" Margin="12,236,0,0" x:Name="label2_Copy" VerticalAlignment="Top" Width="43" Visibility="Visible" RenderTransformOrigin="0.522,-0.967" />
+        <TextBox Height="23" HorizontalAlignment="Left" Margin="71,236,0,0" x:Name="txtCustomerEmail" VerticalAlignment="Top" Width="282" />
+        <Label Content="Telefone" Height="28" HorizontalAlignment="Left" Margin="12,264,0,0" x:Name="label2_Copy1" VerticalAlignment="Top" Width="67" Visibility="Visible" RenderTransformOrigin="0.522,-0.967" />
+        <TextBox Height="23" HorizontalAlignment="Left" Margin="71,264,0,0" x:Name="txtCustomerPhone" VerticalAlignment="Top" Width="282" />
+        <Label Content="Dados de Endereço" Height="28" HorizontalAlignment="Left" Margin="432,188,0,0" x:Name="label2_Copy2" VerticalAlignment="Top" Width="250" Visibility="Visible" RenderTransformOrigin="0.522,-0.967" Grid.ColumnSpan="2" />
+        <Label Content="Rua" Height="28" HorizontalAlignment="Left" Margin="432,218,0,0" x:Name="label2_Copy3" VerticalAlignment="Top" Width="43" Visibility="Visible" RenderTransformOrigin="0.522,-0.967" />
+        <TextBox Height="23" HorizontalAlignment="Left" Margin="475,213,0,0" x:Name="txtCustomerStreet" VerticalAlignment="Top" Width="226" Grid.ColumnSpan="2" />
+        <Label Content="Numero" Height="28" HorizontalAlignment="Left" Margin="432,241,0,0" x:Name="label2_Copy4" VerticalAlignment="Top" Width="56" Visibility="Visible" RenderTransformOrigin="0.522,-0.967" />
+        <TextBox Height="23" HorizontalAlignment="Left" Margin="493,241,0,0" x:Name="txtCustomerNumber" VerticalAlignment="Top" Width="160" />
+        <Label Content="Bairro" Height="28" HorizontalAlignment="Left" Margin="432,269,0,0" x:Name="label2_Copy5" VerticalAlignment="Top" Width="56" Visibility="Visible" RenderTransformOrigin="0.522,-0.967" />
+        <TextBox Height="23" HorizontalAlignment="Left" Margin="493,269,0,0" x:Name="txtCustomerNeighborhood" VerticalAlignment="Top" Width="160" />
+        <Label Content="Cidade" Height="28" HorizontalAlignment="Left" Margin="432,297,0,0" x:Name="label2_Copy6" VerticalAlignment="Top" Width="56" Visibility="Visible" RenderTransformOrigin="0.522,-0.967" />
+        <TextBox Height="23" HorizontalAlignment="Left" Margin="493,297,0,0" x:Name="txtCustomerCity" VerticalAlignment="Top" Width="160" />
+        <Label Content="Estado" Height="28" HorizontalAlignment="Left" Margin="432,325,0,0" x:Name="label2_Copy7" VerticalAlignment="Top" Width="56" Visibility="Visible" RenderTransformOrigin="0.522,-0.967" />
+        <TextBox Height="23" HorizontalAlignment="Left" Margin="493,330,0,0" x:Name="txtCustomerState" VerticalAlignment="Top" Width="160" />
+        <Label Content="Pais" Height="28" HorizontalAlignment="Left" Margin="432,358,0,0" x:Name="label2_Copy8" VerticalAlignment="Top" Width="56" Visibility="Visible" RenderTransformOrigin="0.522,-0.967" />
+        <TextBox Height="23" HorizontalAlignment="Left" Margin="493,358,0,0" x:Name="txtCustomerCountry" VerticalAlignment="Top" Width="160" />
+        <Label Content="Cep" Height="28" HorizontalAlignment="Left" Margin="432,381,0,0" x:Name="label2_Copy9" VerticalAlignment="Top" Width="56" Visibility="Visible" RenderTransformOrigin="0.522,-0.967" />
+        <TextBox Height="23" HorizontalAlignment="Left" Margin="493,386,0,0" x:Name="txtCustomerZipCode" VerticalAlignment="Top" Width="160" />
+        <DataGrid HorizontalAlignment="Left" Height="173" Margin="27,10,0,0" VerticalAlignment="Top" Width="741" x:Name="grid1" Grid.ColumnSpan="2" SelectionChanged="grid1_SelectionChanged"/>
     </Grid>
 </Window>
