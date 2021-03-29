@@ -5,8 +5,30 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfChallenge"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="900" Width="1600"
+        WindowState="Maximized">
     <Grid>
-        
+        <ListBox x:Name="DisplayArea" HorizontalAlignment="Center" Height="700" Margin="42,134,388,35" VerticalAlignment="Center" Width="1162" SelectionChanged="SelectedCostumer">
+        </ListBox>
+        <Button Height="50" x:Name="ButtonNew" Content="New Costumer" FontSize="20" Width="165" VerticalAlignment="Center" Margin="1312,188,116,631" HorizontalAlignment="Stretch" RenderTransformOrigin="0.461,-5.5" Click="NewCostumer"/>
+        <Button Height="50" x:Name="ButtonEdit" Content="Edit Costumer" FontSize="20" Width="165" VerticalAlignment="Center" Margin="1312,314,115,505" HorizontalAlignment="Stretch" RenderTransformOrigin="0.461,-5.5" Click="EditCostumer"/>
+        <Button Height="50" x:Name="ButtonDelete" Content="Delete Costumer" FontSize="20" Width="165" VerticalAlignment="Center" Margin="1312,448,115,371" HorizontalAlignment="Stretch" RenderTransformOrigin="0.461,-5.5" Click="DeleteCostumer"/>
+
+        <StackPanel x:Name="PopUp" HorizontalAlignment="Left" Height="227" Margin="238,291,0,0" VerticalAlignment="Top" Width="680" Background="#FFAAAAAA">
+
+
+            <TextBlock x:Name="Name" TextWrapping="Wrap" Text="Name" Width="60" Margin="20,20,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="16"/>
+            <TextBox x:Name="NameInput" HorizontalAlignment="Left" Height="20" Margin="100,-20,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="484" VerticalContentAlignment="Center" TextChanged="NameInputValue"/>
+            <TextBlock x:Name="Email" TextWrapping="Wrap" Text="E-Mail" Width="60" Margin="20,20,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="16"/>
+            <TextBox x:Name="EmailInput" HorizontalAlignment="Left" Height="20" Margin="100,-20,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="484" VerticalContentAlignment="Center" TextChanged="EmailInputValue"/>
+            <TextBlock x:Name="Phone" TextWrapping="Wrap" Text="Phone" Width="60" Margin="20,20,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="16"/>
+            <TextBox x:Name="PhoneInput" HorizontalAlignment="Left" Height="20" Margin="100,-20,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="484" VerticalContentAlignment="Center" TextChanged="PhoneInputValue"/>
+            <TextBlock x:Name="Address" TextWrapping="Wrap" Text="Address" Width="60" Margin="20,20,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="16"/>
+            <TextBox x:Name="AddressInput" HorizontalAlignment="Left" Height="20" Margin="100,-20,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="484" VerticalContentAlignment="Center" TextChanged="AddressInputValue"/>
+            <Button x:Name="ConfirmButton" Content="Confirm" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,20,148,0" Width="50" Click="ConfirmClick"/>
+            <Button x:Name="CancelButton" Content="Cancel" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="243,-20,170,0" Width="50" Click="CancelClick"/>
+
+
+        </StackPanel>
     </Grid>
 </Window>
